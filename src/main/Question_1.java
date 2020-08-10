@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Dictionary {
+public class Question_1 {
 	public static void doesFileExist(String path) throws FileNotFoundException,  IOException {
 		File file = new File(path);
 		BufferedReader reader = new BufferedReader(new FileReader(file));
