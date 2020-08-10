@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Question_1 {
-	public static void doesFileExist(String path) throws FileNotFoundException,  IOException {
+	public static void doesFileExist(String path) throws FileNotFoundException {
 		File file = new File(path);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		reader.close();
+		if (!file.exists())
+			System.out.println("I'm sorry, that file or path does not exist, "
+					+ "\nplease try a different file name or path.\n");
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please enter the file name or file path.");
 		String path = scan.next();
@@ -49,8 +50,7 @@ public class Question_1 {
 			scan.close();
 		}
 		catch (FileNotFoundException e) {
-			System.out.println("I'm sorry, that file or path does not exist, "
-					+ "\nplease try a different file name or path.");
+			e.printStackTrace();
 		}
 		catch (IOException e) {
 			e.printStackTrace();
