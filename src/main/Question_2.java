@@ -45,7 +45,7 @@ public class Question_2 {
 		letPageLoad();
 		WWWorkshopPom wwWorkshop = new WWWorkshopPom(driver);
 		wwWorkshop.verifyTitle(title);
-		wwWorkshop.printTodaysMeetings("THU");
+		wwWorkshop.printTodaysMeetings(abbreviated);
 		
 		driver.quit();
 	}

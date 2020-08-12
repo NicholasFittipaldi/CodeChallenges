@@ -16,22 +16,25 @@ public class Question_3 {
 	public static void main(String[] args) {
 		Random random = new Random();
 		ArrayList<Integer> array = new ArrayList<>();
+		boolean bool = true;
 		
+		while (bool) {
+			Scanner scan = new Scanner(System.in);
+			System.out.println("Please enter a number between 1 and 500.");
+			int index = scan.nextInt();
 		
-		System.out.println("Please enter a number between 1 and 500.");
-		Scanner scan = new Scanner(System.in);
-		int index = scan.nextInt();
-		
-		if (index > 500 || index < 1)
-			System.out.println("You have entered a number outside the range of 1 to 500, "
-					+ "\nplease enter a different number.");
-		else {
-			for (int i = 1; i <= 500; i++) 
-				array.add(random.nextInt());
+			if (index > 500 || index < 1)
+				System.out.println("You have entered a number outside the range of 1 to 500, "
+						+ "\nplease enter a different number.\n");
+			else {
+				for (int i = 1; i <= 500; i++) 
+					array.add(random.nextInt());
 			
-			printSmallestNumber(array, index - 1);
+				printSmallestNumber(array, index - 1);
+				
+				scan.close();
+				bool = false;
+			}
 		}
-		
-		scan.close();
 	}
 }
