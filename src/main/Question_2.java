@@ -1,5 +1,8 @@
 package main;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -17,15 +20,23 @@ public class Question_2 {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 	
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
+		Date today = new Date();
+		SimpleDateFormat dayOfWeek = new SimpleDateFormat("E");
+		String abbreviated = dayOfWeek.format(today).toUpperCase();
+		
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver.get("https://www.weightwatchers.com/us/");
+		driver.manage().window().maximize();
 		
+		letPageLoad();
 		WWHomePom wwHomePage = new WWHomePom(driver);
+		wwHomePage.verifyTitle();
 		wwHomePage.clickFindWorkshop();
 		
 		letPageLoad();
 		WWFindWorkshopPom wwFindWorkshop = new WWFindWorkshopPom(driver);
+		wwFindWorkshop.verifyTitle();
 		wwFindWorkshop.searchZipCode();
 		wwFindWorkshop.printFirstResult();
 		String title = driver.findElement(By.className("linkUnderline-1_h4g")).getText();
@@ -34,6 +45,7 @@ public class Question_2 {
 		letPageLoad();
 		WWWorkshopPom wwWorkshop = new WWWorkshopPom(driver);
 		wwWorkshop.verifyTitle(title);
+		wwWorkshop.printTodaysMeetings("THU");
 		
 		driver.quit();
 	}

@@ -1,7 +1,12 @@
 package pages;
 
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class WWFindWorkshopPom {
 	WebDriver driver;
@@ -13,6 +18,13 @@ public class WWFindWorkshopPom {
 		
 	public WWFindWorkshopPom(WebDriver driver) {
 		this.driver = driver;
+	}
+	
+	public void verifyTitle() throws IOException {
+		String url = "https://www.weightwatchers.com/us/find-a-workshop/";
+		Document document = Jsoup.connect(url).get();
+		String title = document.title();
+		Assert.assertTrue(title.contains("Find WW Studios & Meetings Near You | WW USA"));
 	}
 	
 	public void searchZipCode() {
