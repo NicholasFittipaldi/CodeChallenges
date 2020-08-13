@@ -16,12 +16,17 @@ import pages.WWWorkshopPom;
 public class Question_2 {
 	static WebDriver driver = new ChromeDriver();
 	
+	// I created this method to allow the pages to fully
+	// load before trying to locate the web elements.
 	public static void letPageLoad() {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 	
 	public static void main(String[] args) throws InterruptedException, IOException {
+		// Creating this date object allows my code to be more dynamic 
+		// when getting the meetings schedule for a specific facility.
 		Date today = new Date();
+		// This object changes the day of the week so that it is abbreviated
 		SimpleDateFormat dayOfWeek = new SimpleDateFormat("E");
 		String abbreviated = dayOfWeek.format(today).toUpperCase();
 		

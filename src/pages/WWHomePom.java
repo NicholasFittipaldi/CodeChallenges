@@ -17,7 +17,7 @@ public class WWHomePom {
 		this.driver = driver;
 	}
 	
-	public void verifyTitle() throws IOException{
+	public void verifyTitle() throws IOException {
 		String url = "https://www.weightwatchers.com/us/";
 		Document document = Jsoup.connect(url).get();
 		String title = document.title();

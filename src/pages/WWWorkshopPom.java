@@ -27,6 +27,8 @@ public class WWWorkshopPom {
 		Assert.assertTrue(title.equals(name));
 	}
 	
+	// This method prints the schedule of the facility for today
+	// and prints the instructors and how many meetings they are hosting.
 	public void printTodaysMeetings(String dayOfWeek) {
 		String weekTitle = driver.findElement(scheduleTitle).getText();
 		String[] week = driver.findElements(schedule).get(0).getText().split("\n");

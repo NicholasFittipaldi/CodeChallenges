@@ -12,8 +12,7 @@ public class Question_1 {
 	public static void doesFileExist(String path) throws FileNotFoundException {
 		File file = new File(path);
 		if (!file.exists())
-			System.out.println("I'm sorry, that file or path does not exist, "
-					+ "\nplease try a different file name or path.\n");
+			 System.out.println("I'm sorry, that file or path does not exist.");
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -54,7 +53,9 @@ public class Question_1 {
 				reader.close();
 				scan.close();
 			}
-			catch (FileNotFoundException e) {}
+			catch (FileNotFoundException e) {
+				System.out.println("Please try a different file name or path.\n");
+			}
 			catch (IOException e) {
 				e.printStackTrace();
 			}
